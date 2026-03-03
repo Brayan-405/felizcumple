@@ -1,356 +1,221 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz Cumpleaños 💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            overflow: hidden;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #6e45e2 0%, #88d3ce 100%);
-            color: white;
-            text-align: center;
-        }
-        
-        .page {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            width: 100vw;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-        
-        .active {
-            display: flex;
-        }
-        
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        
-        p {
-            font-size: 1.2em;
-            max-width: 80%;
-            margin: 10px auto;
-            line-height: 1.6;
-        }
-        
-        button {
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid white;
-            color: white;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            border-radius: 50px;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: all 0.3s;
-            backdrop-filter: blur(5px);
-        }
-        
-        button:hover {
-            background: rgba(255, 255, 255, 0.4);
-            transform: scale(1.05);
-        }
-        
-        #carta {
-            width: 30%;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        #broma-img {
-            width: 40%;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            margin-bottom: 20px;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        #fecha {
-            font-size: 3em;
-            font-weight: bold;
-            margin: 20px 0;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-        }
-        
-        #heart-text {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4em;
-            position: absolute;
-            opacity: 0;
-            transition: opacity 2s;
-        }
-        
-        #particles-js, #particles-date, #particles-heart {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-        
-        .confeti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background-color: #f00;
-            opacity: 0.7;
-            animation: fall linear infinite;
-        }
-        
-        @keyframes fall {
-            to { transform: translateY(100vh); }
-        }
-        
-        #start-heart {
-            font-size: 5em;
-            cursor: pointer;
-            animation: heartbeat 1.5s infinite;
-        }
-        
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            25% { transform: scale(1.1); }
-            50% { transform: scale(1); }
-            75% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Cumpleaños 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    font-family:'Montserrat',sans-serif;
+    overflow:hidden;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#6e45e2 0%,#88d3ce 100%);
+    color:white;
+    text-align:center;
+}
+
+.page{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    width:100vw;
+    position:absolute;
+    padding:20px;
+}
+
+.active{display:flex;}
+
+h1{
+    font-family:'Dancing Script',cursive;
+    font-size:3em;
+}
+
+button{
+    background:rgba(255,255,255,0.2);
+    border:2px solid white;
+    color:white;
+    padding:12px 25px;
+    font-size:1.2em;
+    border-radius:50px;
+    cursor:pointer;
+    margin-top:20px;
+    transition:0.3s;
+}
+
+button:hover{
+    background:white;
+    color:#6e45e2;
+    transform:scale(1.1);
+}
+
+#btnSiguiente{
+    font-size:2em;
+    animation:flecha 1s infinite alternate;
+}
+
+@keyframes flecha{
+    from{transform:translateX(0px);}
+    to{transform:translateX(10px);}
+}
+
+#heart-text{
+    font-family:'Dancing Script',cursive;
+    font-size:3.5em;
+    position:absolute;
+    opacity:0;
+    transition:opacity 1s;
+}
+
+#start-heart{
+    font-size:5em;
+    cursor:pointer;
+    animation:latido 1s infinite;
+}
+
+@keyframes latido{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+}
+
+#mensajeFinal{
+    font-size:1.3em;
+    margin-top:20px;
+    animation:fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+</style>
 </head>
+
 <body>
-    <!-- Audio (LOOP desde el inicio) -->
-    <audio id="bgMusic" loop>
-        <source src="sound/Mi persona favorita.mp3" type="audio/mp3">
-    </audio>
 
-    <!-- Página 0: Corazón de inicio -->
-    <div id="page0" class="page active">
-        <div id="start-heart">💘</div>
-        <p style="margin-top: 20px;">Haz clic en el corazón Bebaa</p>
-    </div>
+<audio id="bgMusic" loop>
+<source src="sound/Mi persona favorita.mp3" type="audio/mp3">
+</audio>
 
-    <!-- Página 1: For You -->
-    <div id="page1" class="page">
-        <div id="particles-js"></div>
-        <img src="img/FOR YOU.gif" alt="For You" style="width: 350px;"; margin: 20px 0; cursor: pointer;" id="forYouImage">
-        <h1>Para el amor de mi vida...</h1>
-        <button id="btnSiguiente"> 🌟🌟🌟</button>
-    </div>
+<div id="page0" class="page active">
+<div id="start-heart">💘</div>
+<p>Haz clic en el corazón, mi vida</p>
+</div>
 
-    <!-- Página 2: Fecha con partículas -->
-    <div id="page2" class="page">
-        <div id="particles-date"></div>
-        <h1>🎉 Feliz Cumple mi Peque precioso 🎂</h1>
-        <div id="fecha">15/08/1998</div>
-        <p>El día que el universo me regaló a ti... 🌌</p>
-        <button id="btnCarta">Mi corazón 🐥 pa ti ...</button>
-    </div>
+<div id="page1" class="page">
+<img src="img/Regalo.gif" style="width:350px;">
+<h1>Para el amor de mi vida...</h1>
+<button id="btnSiguiente">➡</button>
+</div>
 
-    <!-- Página 3: Carta -->
-    <div id="page3" class="page">
-        <img src="img/CARTA.gif" alt="Carta" id="carta">
-        <button id="btnMensaje">Lee mi mensaje 💌</button>
-    </div>
+<div id="page2" class="page">
+<h1>Feliz cumple mi niña preciosa</h1>
+<div>03-03-2006</div>
+<button id="btnCarta">Mi corazón 🐥 pa ti ...</button>
+</div>
 
-    <!-- Página 4: Broma con foto -->
-    <div id="page4" class="page">
-        <h1>¿Quién diría que ese bebé guapo sería MI hombre? 😉</h1>
-            <img src="img/peques.png" alt="Tu y yo de pequeños" id="broma-img" style="width: 17%; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.3);">
-        <p>El destino ya trabajaba en nosotros... ¡Mira qué tiernos nos vemos juntos incluso antes de conocernos! 💖 (Spoiler: Siempre fuiste mío) 💫 </p>
-        <button id="btnMensajeReal">Ahora sí, lee mi mensaje 💖</button>
-    </div>
+<div id="page3" class="page">
+<img src="img/CARTA.gif" style="width:30%;">
+<button id="btnMensaje">Lee mi mensaje 💌</button>
+</div>
 
-    <!-- Página 5: Mensaje -->
-    <div id="page5" class="page">
-        <h1>Para el amor de mi vida...</h1>
-        <div style="max-height: 60vh; overflow-y: auto; padding: 20px;">
-            <p>Hoy no es un día cualquiera… ¡es el día en que nació la persona más especial de mi vida! 💫</p>
-            <p>No sabes cuánto agradezco que el universo haya conspirado para que existas, para que estés aquí, para que seas tú… tan único, tan guapote, tan inteligente y tan tú.</p>
-            <p>En este cumpleaños, más allá de los abrazos, los besos y los regalos, quiero regalarte un deseo sincero desde mi corazón de pollo:</p>
-            <p>Deseo que la vida te abrace siempre con oportunidades hermosas, que tu mente siga brillando con ideas increíbles y que nunca te falten razones para sonreír.</p>
-            <p>Deseo que cada proyecto que te propongas florezca, que cada paso que des te acerque a tus sueños, y que nunca olvides lo orgullosa que estoy de ti, por todo lo que eres y todo lo que estás construyendo.</p>
-            <p>Gracias por ser mi refugio, mi alegría, mi compañero y mi amor.</p>
-            <p>¡Feliz cumpleaños, mi cielo! Que este nuevo año de vida esté lleno de magia, de amor sincero (como el mío) y de momentos inolvidables.</p>
-            <p style="font-family: 'Dancing Script', cursive; font-size: 1.5em;">Con todo mi amor, Giss.</p>
-        </div>
-        <button id="btnCorazon">Mi último regalo para ti 💝</button>
-    </div>
+<div id="page4" class="page">
+<h1>Ya sabía yo que mi niña se convertiría en MI MUJER</h1>
+<img src="img/Paques.jpg" style="width:17%; border-radius:15px;">
+<p>
+siempre nos vemos muy bonitos juntos aunque estemos serios nos vemos lindos JUNTOS 
+(Spam: nunca te dejaré)
+</p>
+<button id="btnMensajeReal">Ahora sí, lee mi mensaje 💖</button>
+</div>
 
-    <!-- Página 6: Corazón gigante -->
-    <div id="page6" class="page">
-        <div id="particles-heart"></div>
-        <div id="heart-text">I 💜 YOU</div>
-    </div>
+<div id="page5" class="page">
+<h1>Para el amor de mi vida...</h1>
+<div style="max-height:60vh; overflow-y:auto; padding:20px;">
+<p>
+¡Feliz cumpleaños, mi amor hermosa! Hoy celebro no solo a la mujer más increíble del mundo,
+sino también tu segundo cumpleaños juntos. Han pasado exactamente 1 año y 5 meses desde que
+nuestros caminos se cruzaron, y cada día a tu lado ha sido una bendición que no cambiaría por nada.
+Eres mi refugio, mi risa diaria y el latido que hace que mi corazón sonría.
+Te amo con todo lo que soy, y no veo la hora de seguir escribiendo nuestra historia.
+¡Que este día sea tan especial como tú!
+</p>
+</div>
+<button id="btnCorazon">Mi último regalo para ti 💝</button>
+</div>
 
-    <!-- Página 7: Mensaje final -->
-    <div id="page7" class="page">
-        <h1>Espero te haya gustado...</h1>
-        <p style="font-size: 1.5em;">Cada detalle lo hice con todo mi amor para ti 💕</p>
-        <img src="img/PASTEL.gif" alt="Pastel de cumpleaños" style="width: 200px; margin: 20px 0;">
-        <p>¿Apaga la velita mi amor? 🎂</p>
-        <button id="btnFinal">¡Soplar! 🌬️💨</button>
-    </div>
+<div id="page6" class="page">
+<div id="heart-text">Feliz cumple a mi maetaa &lt;3</div>
+</div>
 
-    <script>
-        // Iniciar música (LOOP desde el principio)
-        document.addEventListener('DOMContentLoaded', function() {
-            const music = document.getElementById('bgMusic');
-            music.volume = 0.5;
-            
-            // Corazón de inicio
-            document.getElementById('start-heart').addEventListener('click', function() {
-                music.play().catch(e => console.log("Auto-play prevented: ", e));
-                document.getElementById('page0').classList.remove('active');
-                document.getElementById('page1').classList.add('active');
-                
-                // Efecto de confeti
-                for (let i = 0; i < 300; i++) {
-                    createConfeti();
-                }
-                
-                // Iniciar partículas
-                particlesJS('particles-js', {
-                    particles: {
-                        number: { value: 150, density: { enable: true, value_area: 800 } },
-                        color: { value: "#ffffff" },
-                        shape: { type: "circle" },
-                        opacity: { value: 0.7, random: true },
-                        size: { value: 3, random: true },
-                        line_linked: { enable: false },
-                        move: { enable: true, speed: 3, direction: "none", random: true, straight: false, out_mode: "out" }
-                    }
-                });
-            });
-            
-            // Navegación entre páginas
-            document.getElementById('btnSiguiente').addEventListener('click', function() {
-                document.getElementById('page1').classList.remove('active');
-                document.getElementById('page2').classList.add('active');
-                
-                // Partículas para la fecha (1000 partículas azules)
-                particlesJS('particles-date', {
-                    particles: {
-                        number: { value: 1000, density: { enable: true, value_area: 800 } },
-                        color: { value: "#1E90FF" },
-                        shape: { type: "circle" },
-                        opacity: { value: 0.8, random: true },
-                        size: { value: 3, random: true },
-                        line_linked: { enable: false },
-                        move: { 
-                            enable: true, 
-                            speed: 5, 
-                            direction: "none", 
-                            random: true, 
-                            straight: false, 
-                            out_mode: "bounce" 
-                        }
-                    }
-                });
-            });
-            
-            document.getElementById('btnCarta').addEventListener('click', function() {
-                document.getElementById('page2').classList.remove('active');
-                document.getElementById('page3').classList.add('active');
-            });
-            
-            document.getElementById('btnMensaje').addEventListener('click', function() {
-                document.getElementById('page3').classList.remove('active');
-                document.getElementById('page4').classList.add('active');
-            });
-            
-            document.getElementById('btnMensajeReal').addEventListener('click', function() {
-                document.getElementById('page4').classList.remove('active');
-                document.getElementById('page5').classList.add('active');
-            });
-            
-            document.getElementById('btnCorazon').addEventListener('click', function() {
-                document.getElementById('page5').classList.remove('active');
-                document.getElementById('page6').classList.add('active');
-                
-                // Partículas en forma de corazón (1000 partículas rosas)
-                particlesJS('particles-heart', {
-                    particles: {
-                        number: { value: 1000, density: { enable: true, value_area: 800 } },
-                        color: { value: "#FF69B4" },
-                        shape: { type: "circle" },
-                        opacity: { value: 0.8, random: true },
-                        size: { value: 4, random: true },
-                        line_linked: { enable: false },
-                        move: { 
-                            enable: true, 
-                            speed: 3, 
-                            direction: "none", 
-                            random: false, 
-                            straight: false, 
-                            out_mode: "bounce",
-                            attract: { enable: true, rotateX: 600, rotateY: 1200 }
-                        }
-                    }
-                });
-                
-                // Mostrar "I 💜 YOU" después de 5 segundos
-                setTimeout(() => {
-                    document.getElementById('heart-text').style.opacity = 1;
-                    
-                    // Ir a la página final después de 8 segundos
-                    setTimeout(() => {
-                        document.getElementById('page6').classList.remove('active');
-                        document.getElementById('page7').classList.add('active');
-                    }, 8000);
-                }, 5000);
-            });
-            
-            document.getElementById('btnFinal').addEventListener('click', function() {
-                // Efecto de velita apagada
-                const pastel = document.querySelector('#page7 img');
-                pastel.style.filter = 'brightness(0.8)';
-                
-                // Mensaje final
-                const mensajeFinal = document.createElement('p');
-                mensajeFinal.innerHTML = '¡Felicidades mi amor! 🎉<br>Ahora pide un deseo... y recuerda que yo ya tengo el mío: <strong>¡Ser feliz a tu lado siempre!</strong> 💖';
-                mensajeFinal.style.fontSize = '1.3em';
-                mensajeFinal.style.marginTop = '20px';
-                document.getElementById('page7').appendChild(mensajeFinal);
-                
-                // Eliminar botón
-                this.remove();
-            });
-            
-            // Función para crear confeti
-            function createConfeti() {
-                const confeti = document.createElement('div');
-                confeti.className = 'confeti';
-                confeti.style.left = Math.random() * 100 + 'vw';
-                confeti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                confeti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                document.body.appendChild(confeti);
-                
-                setTimeout(() => {
-                    confeti.remove();
-                }, 5000);
-            }
-        });
-    </script>
+<div id="page7" class="page">
+<img src="img/PASTEL.gif" style="width:200px;">
+<p>sopla la velita mi niña hermosa 🎂</p>
+<button id="btnFinal">¡Soplar! 🌬️💨</button>
+</div>
+
+<script>
+
+document.addEventListener('DOMContentLoaded',function(){
+
+const music=document.getElementById('bgMusic');
+const pages=document.querySelectorAll('.page');
+
+function show(num){
+pages.forEach(p=>p.classList.remove('active'));
+document.getElementById('page'+num).classList.add('active');
+}
+
+document.getElementById('start-heart').onclick=()=>{
+music.play();
+show(1);
+};
+
+document.getElementById('btnSiguiente').onclick=()=>show(2);
+document.getElementById('btnCarta').onclick=()=>show(3);
+document.getElementById('btnMensaje').onclick=()=>show(4);
+document.getElementById('btnMensajeReal').onclick=()=>show(5);
+
+document.getElementById('btnCorazon').onclick=()=>{
+show(6);
+
+setTimeout(()=>{
+document.getElementById('heart-text').style.opacity=1;
+
+setTimeout(()=>{
+show(7);
+},2000);
+
+},800);
+};
+
+document.getElementById('btnFinal').onclick=()=>{
+
+if(document.getElementById('mensajeFinal')) return;
+
+const mensajeFinal=document.createElement('p');
+mensajeFinal.id="mensajeFinal";
+mensajeFinal.innerHTML='¡Felicidades mi amor! 🎉<br>Ahora pide un deseo... y recuerda que yo ya tengo el mío: <strong>¡Ser feliz a tu lado siempre!</strong> 💖';
+
+document.getElementById('page7').appendChild(mensajeFinal);
+
+};
+
+});
+
+</script>
+
 </body>
 </html>
